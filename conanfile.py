@@ -11,14 +11,13 @@ class CeleroConan(ConanFile):
     description = "C++ Benchmark Authoring Library/Framework"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    default_options = "shared=False"
+    default_options = "shared=True"
     generators = "cmake"
 
     def source(self):
         gitRepo = "https://github.com/DigitalInBlue/Celero.git"
-        self.run("git clone %s" % (gitRepo))
-        self.run("cd Celero && git checkout")
-        
+        self.run("git clone %s ." % (gitRepo))
+
     def build(self):
         cmake = CMake(self)
         if self.options.shared:
@@ -44,3 +43,4 @@ class CeleroConan(ConanFile):
     def package_info(self):
         self.cpp_info.libs = ["celero"]
         self.cpp_info.libdirs = ["lib","lib/static","bin"]
+
