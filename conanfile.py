@@ -17,7 +17,7 @@ class CeleroConan(ConanFile):
     def source(self):
         gitRepo = "https://github.com/DigitalInBlue/Celero.git"
         self.run("git clone %s" % (gitRepo))
-        self.run("cd Celero && git checkout 
+        self.run("cd Celero && git checkout")
         
     def build(self):
         cmake = CMake(self)
